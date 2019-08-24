@@ -1,4 +1,4 @@
-package hello;
+package com.beans;
 
 public class Greetings {
 
