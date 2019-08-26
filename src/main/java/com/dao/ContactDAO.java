@@ -23,6 +23,6 @@ public interface ContactDAO extends CrudRepository<Contact, Long> {
     @Query("delete from Contact c where c.emailAddress = ?1")
     public int deleteByEmail(String email);
 
-    @Query("Select c from Contact c where c.emailAddress = ?1 and c.id != id")
+    @Query("Select c from Contact c where c.emailAddress = ?2 and c.id != ?1")
     public List<Contact> findContactWithEmailWithoutId(Long id, String email);
 }
