@@ -24,12 +24,12 @@ public class Contact {
 
     @NotNull(message = "Invalid email") @NotBlank(message = "Invalid email")
     @NotEmpty(message = "Invalid email")
-    @Column(name = "emailAddress")
+    @Column(name = "emailaddress")
     private String emailAddress;
 
     @NotNull(message = "Invalid phone number")
     @Digits(integer=10, fraction=0, message = "Give valid 10 digit phone number")
-    @Column(name = "phoneNumber")
+    @Column(name = "phonenumber")
     private Long phoneNumber;
 
 //    @ManyToOne(cascade = CascadeType.ALL)

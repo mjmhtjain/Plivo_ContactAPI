@@ -1,9 +1,12 @@
 package com.dao;
 
 import com.entity.Contact;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
 
 @Repository
 public interface ContactDAO extends CrudRepository<Contact, Long> {
@@ -13,4 +16,9 @@ public interface ContactDAO extends CrudRepository<Contact, Long> {
 
     @Query("Select c from Contact c where c.emailAddress = ?1")
     public Contact findByEmail(String email);
+
+    @Transactional
+    @Modifying
+    @Query("delete from Contact c where c.emailAddress = ?1")
+    public int deleteByEmail(String email);
 }

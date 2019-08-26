@@ -13,4 +13,6 @@ public interface ContactService {
     public Contact findContactByName(String name);
 
     public Contact findContactByEmail(String email);
+
+    public int deleteContactByEmail(String email);
 }

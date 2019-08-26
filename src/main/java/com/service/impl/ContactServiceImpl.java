@@ -41,4 +41,10 @@ public class ContactServiceImpl implements ContactService {
 
         return contactDAO.findByEmail(email);
     }
+
+    @Override
+    public int deleteContactByEmail(String email) {
+
+        return contactDAO.deleteByEmail(email);
+    }
 }
