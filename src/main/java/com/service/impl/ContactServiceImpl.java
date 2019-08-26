@@ -6,7 +6,9 @@ import com.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.bind.ValidationException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -46,5 +48,26 @@ public class ContactServiceImpl implements ContactService {
     public int deleteContactByEmail(String email) {
 
         return contactDAO.deleteByEmail(email);
+    }
+
+    @Override
+    public Contact updateContact(Contact contact) throws ValidationException {
+        Contact existingContact = contactDAO.findById(contact.getId()).orElse(null);
+
+        if(null == existingContact){
+            throw new IllegalArgumentException("Contact does not exist");
+        }
+
+        existingContact.setEmailAddress(contact.getEmailAddress());
+        existingContact.setName(contact.getName());
+        existingContact.setPhoneNumber(contact.getPhoneNumber());
+
+        List<Contact> contactList = contactDAO.findContactWithEmailWithoutId
+                (existingContact.getId(), existingContact.getEmailAddress());
+        if (null != contactList || !contactList.isEmpty()) {
+            throw new ValidationException("Email Address exists");
+        }
+
+        return contactDAO.save(existingContact);
     }
 }

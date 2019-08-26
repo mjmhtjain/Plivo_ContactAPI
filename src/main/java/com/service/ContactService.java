@@ -2,6 +2,7 @@ package com.service;
 
 import com.entity.Contact;
 
+import javax.xml.bind.ValidationException;
 import java.util.List;
 
 public interface ContactService {
@@ -15,4 +16,6 @@ public interface ContactService {
     public Contact findContactByEmail(String email);
 
     public int deleteContactByEmail(String email);
+
+    public Contact updateContact(Contact contact) throws ValidationException;
 }

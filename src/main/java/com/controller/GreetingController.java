@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.xml.bind.ValidationException;
 import java.util.List;
 
 @RestController
@@ -44,5 +45,11 @@ public class GreetingController {
     public ResponseEntity<Integer> deleteContact(@RequestParam(value = "email") String email) {
         int count = contactService.deleteContactByEmail(email);
         return new ResponseEntity<Integer>(count, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/editContact")
+    public ResponseEntity<Contact> editContact(@Valid @RequestBody Contact contact) throws ValidationException {
+        Contact updatedContact = contactService.updateContact(contact);
+        return new ResponseEntity<Contact>(updatedContact, HttpStatus.OK);
     }
 }

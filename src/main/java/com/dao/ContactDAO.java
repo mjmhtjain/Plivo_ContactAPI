@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface ContactDAO extends CrudRepository<Contact, Long> {
@@ -21,4 +22,7 @@ public interface ContactDAO extends CrudRepository<Contact, Long> {
     @Modifying
     @Query("delete from Contact c where c.emailAddress = ?1")
     public int deleteByEmail(String email);
+
+    @Query("Select c from Contact c where c.emailAddress = ?1 and c.id != id")
+    public List<Contact> findContactWithEmailWithoutId(Long id, String email);
 }

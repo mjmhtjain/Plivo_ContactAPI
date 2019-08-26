@@ -39,7 +39,6 @@ public class Contact {
         this.name = name;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
-//        this.user = user;
     }
 
     public Contact() {
@@ -77,12 +76,5 @@ public class Contact {
     public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-//
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+
 }
