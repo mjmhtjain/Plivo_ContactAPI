@@ -64,7 +64,7 @@ public class ContactServiceImpl implements ContactService {
 
         List<Contact> contactList = contactDAO.findContactWithEmailWithoutId
                 (existingContact.getId(), existingContact.getEmailAddress());
-        if (null != contactList || !contactList.isEmpty()) {
+        if (null != contactList && !contactList.isEmpty()) {
             throw new ValidationException("Email Address exists");
         }
 
