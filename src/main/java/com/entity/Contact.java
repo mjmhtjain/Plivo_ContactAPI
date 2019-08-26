@@ -33,10 +33,6 @@ public class Contact {
     @Column(name = "phonenumber")
     private Long phoneNumber;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
     //constructor
     public Contact(Long id, String name, String emailAddress, Long phoneNumber) {
         this.id = id;
