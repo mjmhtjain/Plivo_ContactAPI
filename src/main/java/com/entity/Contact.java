@@ -13,7 +13,8 @@ import javax.validation.constraints.NotNull;
 public class Contact {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_id_gen")
+    @SequenceGenerator(name="contact_id_gen", sequenceName = "contact_id_seq")
     @Column(name = "id")
     private Long id;
 
