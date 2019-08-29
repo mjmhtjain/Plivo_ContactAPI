@@ -36,16 +36,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/securityNone").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .httpBasic()
-//                .authenticationEntryPoint(authenticationEntryPoint);
-//
-//        http.addFilterAfter(new CustomFilter(),
-//                BasicAuthenticationFilter.class);
-//    }
 }
